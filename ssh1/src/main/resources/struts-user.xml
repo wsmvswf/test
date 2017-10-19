@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="user" namespace="/user"
+		extends="json-default">
+		
+		<global-results>
+			<result name="error">
+				/WEB-INF/jsp/error.jsp
+			</result>
+		</global-results>
+		
+		<action name="list" class="userAction" method="list">
+			<result name="list">
+				/WEB-INF/jsp/user/list.jsp
+			</result>
+		</action>	
+		
+		<!-- 显示添加界面 -->
+		<action name="add">
+			<result>
+				/WEB-INF/jsp/user/add.jsp
+			</result>
+		</action>
+		
+		<!-- 保存数据到数据库 -->
+		<action name="save" class="userAction"
+			method="save">
+			<result name="success" type="redirectAction"> 
+				list
+			</result>
+			<result name="add">
+				/WEB-INF/jsp/user/add.jsp
+			</result>
+		</action>
+		
+		<!-- 打开编辑用户信息的界面 -->
+		<action name="edit" 
+			class="userAction"
+			method="edit">
+			<result name="edit">
+				/WEB-INF/jsp/user/edit.jsp
+			</result>	
+		</action>
+		
+		<action name="update" class="userAction" method="update">
+			<result name="list" type="redirectAction">
+				list
+			</result>
+			<result name="edit">
+				/WEB-INF/jsp/user/edit.jsp
+			</result>	
+		</action>
+		
+		<action name="delete" class="userAction" method="delete">
+			<result name="delete" type="redirectAction">
+				list
+			</result>
+		</action>
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+

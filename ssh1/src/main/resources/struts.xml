@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<!-- DTD: Doc Type 文档定义, 规定了XML文件中
+可以使用那些标签,和标签的嵌套关系 -->
+<struts>
+	<!-- name 属性就是一个标识,写啥都行,不能重复 -->
+	<!-- namespace 用于声明第一层请求web路径
+	 http://localhost:8080/ssh1/demo -->
+	<!-- extends 用于继承Struts2的默认配置 -->
+	<package name="demo" namespace="/demo" extends="struts-default"> 
+		<!-- action 中的name是第二层 
+		 http://localhost:8080/ssh1/demo/hello.action -->
+		<!-- 请求 /demo/hello.action时候执行
+		DemoAction类中的控制方法 execute -->
+		<action name="hello" class="cn.tedu.action.DemoAction">
+			<!-- 当控制方法返回success时候
+			转发到 demo.jsp -->
+			<result name="success">
+				/WEB-INF/jsp/demo.jsp
+			</result>
+		</action>
+		
+		<!-- 浏览器到控制器传递参数 -->
+		<action name="param"
+			class="cn.tedu.action.ParamAction">
+			<result name="success">
+				/WEB-INF/jsp/demo.jsp
+			</result>
+		</action>
+		
+		<!-- 将表单数据打包为域模型对象传递到控制器 -->
+		<action name="user" class="cn.tedu.action.UserAction" method="save"> 
+			<result name="success">
+				/WEB-INF/jsp/demo.jsp
+			</result>
+		</action>
+		
+		<!-- 将控制器中的值展示到JSP上 -->
+		<action name="msg" class="cn.tedu.action.MessageAction">
+			<result name="success">
+				/WEB-INF/jsp/message.jsp
+			</result>	
+		</action>
+		
+		<!-- 重定向结果类型 -->
+		<action name="doc" class="cn.tedu.action.DocAction">
+			<result name="doc" type="redirect"> 				
+				http://doc.tedu.cn
+			</result>	
+		</action>
+		
+		<!-- 重定向到其他控制器 -->
+		<action name="test" class="cn.tedu.action.TestAction">
+			<result name="test" type="redirectAction">
+				hello
+			</result>	
+		</action>
+		
+		<!-- 利用Stream Result 动态下载图片 -->
+		<action name="img"
+			class="cn.tedu.action.ImageAction">
+			<result name="img" type="stream">
+				<param name="inputName">
+					image
+				</param>
+				<param name="contentType">
+					image/png
+				</param>
+			</result>
+			<result name="error">
+				/WEB-INF/jsp/error.jsp
+			</result>
+		</action>
+		
+		<action name="excel" 
+			 class="cn.tedu.action.ExcelAction">
+			 <result  name="exl" type="stream">
+			 	<param name="inputName">excel</param>
+			 	<param name="contentType">
+			 		application/vnd.ms-excel
+			 	</param>
+			 	<param name="contentDisposition">
+			 		attachment;filename="hello.xls"
+			 	</param>
+			 </result>
+			 <result name="error">
+			 	/WEB-INF/jsp/error.jsp
+			 </result>
+		</action>
+	</package>
+
+	<!-- 继承json-default才能使用json类型的
+	Result -->	
+	<package name="test" namespace="/test" extends="json-default">
+		<!-- 默认情况下json Result将控制器
+		的全部Bean属性序列化为JSON字符串发送
+		到客户端 -->
+		<action name="json" class="cn.tedu.action.JsonAction">
+			<result name="json" type="json"/>
+		</action>
+		
+		<!-- 利用root参数将一个属性发送到客户端 -->
+		<action name="json2" class="cn.tedu.action.JsonAction">
+			<result name="json" type="json">
+				<param name="root">name</param>
+			</result>
+		</action>
+		
+		<!-- 利用JsonResult类封装需要发送
+		的数据到客户端 -->
+		<action name="json3" class="cn.tedu.action.Json3Action">
+			<result name="json" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- 使用Spring管理控制器Bean -->
+		<action name="bean" class="beanAction">
+			<result name="success">
+				/WEB-INF/jsp/demo.jsp
+			</result>
+		</action>
+		
+		<action name="currn"
+			class="currnAction">
+			<result name="success">
+				/WEB-INF/jsp/demo.jsp
+			</result>
+		</action>
+	</package>
+	<!-- 加载其他的配置文件 -->
+	<include file="struts-user.xml"></include>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+

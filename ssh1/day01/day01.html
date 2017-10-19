@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day01</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>SSH</h1>
+<p>Spring + Struts 2 + Hibernate = SSH</p>
+<p><img src="ssh.png" /></p>
+<p>Spring + Spring MVC + MyBatis = SSM </p>
+<p><img src="ssm.png" /></p>
+<h2>Struts 2</h2>
+<p>Struts1 和 Struts2 没有任何关系.</p>
+<p>Struts2 前身是 WebWorks 采用MVC设计模式的WEB应用框架.</p>
+<p><img src="mvc.png" /></p>
+<h2>使用Struts2</h2>
+<p>步骤:</p>
+<ol>
+<li>导包</li>
+<li>
+配置
+<ol>
+<li>主控制器的配置 web.xml </li>
+<li>配置子控制器 struts.xml</li>
+<li>测试</li>
+</ol>
+</li>
+<li>
+Hello World
+<ol>
+<li>编写子控制器</li>
+<li>JSP</li>
+<li>配置 控制器和JSP的转发关系</li>
+</ol>
+</li>
+<li>部署测试.</li>
+</ol>
+<p><img src="struts2.png" /></p>
+<h3>Hello World</h3>
+<ol>
+<li>
+<p>导包 pom.xml</p>
+<pre><code>&lt;!-- Struts 2 核心包 --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.struts&lt;/groupId&gt;
+  &lt;artifactId&gt;struts2-core&lt;/artifactId&gt;
+  &lt;version&gt;2.5.12&lt;/version&gt;
+&lt;/dependency&gt;  
+</code></pre>
+
+</li>
+<li>
+<p>配置</p>
+<ol>
+<li>
+<p>配置主控制器 web.xml</p>
+<pre><code>  &lt;filter&gt;
+    &lt;display-name&gt;StrutsPrepareAndExecuteFilter&lt;/display-name&gt;
+    &lt;filter-name&gt;StrutsPrepareAndExecuteFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter&lt;/filter-class&gt;
+  &lt;/filter&gt;
+  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;StrutsPrepareAndExecuteFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;
+</code></pre>
+
+</li>
+<li>
+<p>添加配置文件struts.xml </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE struts PUBLIC
+    &quot;-//Apache Software Foundation//DTD Struts Configuration 2.5//EN&quot;
+    &quot;http://struts.apache.org/dtds/struts-2.5.dtd&quot;&gt;
+&lt;struts&gt;
+&lt;/struts&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Hello World</p>
+<ol>
+<li>
+<p>控制器类:</p>
+<pre><code>/**
+ * Struts2 的控制器类
+ * 就是普通Java类
+ */
+public class DemoAction {
+
+    /**
+     * 控制器中的 流程控制方法 一般是execute方法
+     * 返回值 success 代表JSP页面的名称 
+     */
+    public String execute(){
+        System.out.println(&quot;Hello World!&quot;);
+        return &quot;success&quot;;
+    }
+}
+</code></pre>
+
+</li>
+<li>
+<p>编写JSP文件: demo.jsp</p>
+<pre><code>&lt;%@ page contentType=&quot;text/html; charset=utf-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;DEMO&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- /WEB-INF/jsp/demo.jsp --&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</li>
+<li>
+<p>配置struts.xml</p>
+<pre><code>&lt;!-- name 属性就是一个标识,写啥都行,不能重复 --&gt;
+&lt;!-- namespace 用于声明第一层请求web路径
+ http://localhost:8080/ssh1/demo --&gt;
+&lt;!-- extends 用于继承Struts2的默认配置 --&gt;
+&lt;package name=&quot;demo&quot; 
+    namespace=&quot;/demo&quot;
+    extends=&quot;struts-default&quot;&gt; 
+    &lt;!-- action 中的name是第二层 
+     http://localhost:8080/ssh1/demo/hello.action --&gt;
+    &lt;!-- 请求 /demo/hello.action时候执行
+    DemoAction类中的控制方法 execute --&gt;
+    &lt;action name=&quot;hello&quot; 
+        class=&quot;cn.tedu.action.DemoAction&quot;&gt;
+        &lt;!-- 当控制方法返回success时候
+        转发到 demo.jsp --&gt;
+        &lt;result name=&quot;success&quot;&gt;
+            /WEB-INF/jsp/demo.jsp
+        &lt;/result&gt;
+    &lt;/action&gt;
+
+&lt;/package&gt;
+</code></pre>
+
+</li>
+</ol>
+</li>
+<li>
+<p>部署测试.</p>
+<pre><code>http://localhost:8080/ssh1/demo/user.action 
+</code></pre>
+
+</li>
+</ol>
+<h2>浏览器向控制器发送参数</h2>
+<h3>使用控制器Bean属性接收参数</h3>
+<p>原理:</p>
+<p><img src="param.png" /></p>
+<p>步骤:</p>
+<ol>
+<li>
+<p>编写demo.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;从浏览器到控制器传输参数&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;从浏览器到控制器传输参数&lt;/h1&gt;
+    &lt;form action=&quot;demo/param.action&quot; 
+        method=&quot;post&quot;&gt; 
+        &lt;input type=&quot;text&quot; name=&quot;score&quot;&gt;&lt;br&gt;
+        &lt;input type=&quot;text&quot; name=&quot;user&quot;&gt;&lt;br&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;保存&quot;&gt; 
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</li>
+<li>
+<p>编写控制器</p>
+<pre><code>public class ParamAction {
+    private Integer score;
+    private String user;
+    public Integer getScore() {
+        return score;
+    }
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+    public String getUser() {
+        return user;
+    }
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    /**
+     * 流程控制器方法 
+     * Struts2 会在执行控制器方法之前调用
+     * getXXX, setXXX 注入用户提交的参数!
+     */
+    public String execute(){
+        //展示从浏览器接收到参数
+        System.out.println(&quot;score:&quot;+score);
+        System.out.println(&quot;user:&quot;+user);
+        return &quot;success&quot;;
+    }
+}
+</code></pre>
+
+</li>
+<li>
+<p>配置 struts.xml</p>
+<pre><code>&lt;!-- 浏览器到控制器传递参数 --&gt;
+&lt;action name=&quot;param&quot;
+    class=&quot;cn.tedu.action.ParamAction&quot;&gt;
+    &lt;result name=&quot;success&quot;&gt;
+        /WEB-INF/jsp/demo.jsp
+    &lt;/result&gt;
+&lt;/action&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+</li>
+</ol>
+<h3>使用域模型(值对象)打包传递参数</h3>
+<p>原理:</p>
+<p><img src="param1.png" /></p>
+<p>案例:</p>
+<ol>
+<li>
+<p>编写user-demo.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;域模型封装参数&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;域模型封装参数&lt;/h1&gt;
+    &lt;form action=&quot;demo/user.action&quot; method=&quot;post&quot;&gt;
+        姓名:&lt;input type=&quot;text&quot; name=&quot;user.name&quot;&gt;&lt;br&gt;
+        年龄:&lt;input type=&quot;text&quot; name=&quot;user.age&quot;&gt;&lt;br&gt;
+        分数:&lt;input type=&quot;text&quot; name=&quot;user.score&quot;&gt;&lt;br&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</li>
+<li>
+<p>编写值对象</p>
+<pre><code>public class UserVo {
+    private String name;
+    private Integer age;
+    private Integer score;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public Integer getAge() {
+        return age;
+    }
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+    public Integer getScore() {
+        return score;
+    }
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+    @Override
+    public String toString() {
+        return &quot;UserVo [name=&quot; + name + &quot;, age=&quot; + age + &quot;, score=&quot; + score + &quot;]&quot;;
+    }
+}   
+</code></pre>
+
+</li>
+<li>
+<p>编写控制器</p>
+<pre><code>public class UserAction {
+
+    private UserVo user;
+
+    public void setUser(UserVo user) {
+        this.user = user;
+    }
+
+    public UserVo getUser() {
+        return user;
+    }
+
+    public String save(){
+        //展示接收到的数据
+        System.out.println(user);
+        return &quot;success&quot;;
+    }
+}
+</code></pre>
+
+</li>
+<li>
+<p>配置 struts.xml</p>
+<pre><code>&lt;!-- 将表单数据打包为域模型对象传递到控制器 --&gt;
+&lt;action name=&quot;user&quot;
+    class=&quot;cn.tedu.action.UserAction&quot;
+    method=&quot;save&quot;&gt; 
+    &lt;result name=&quot;success&quot;&gt;
+        /WEB-INF/jsp/demo.jsp
+    &lt;/result&gt;
+&lt;/action&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+</li>
+</ol>
+<h3>将数据从控制器显示到JSP中</h3>
+<p>Struts2 控制器的Bean属性可以在JSP中使用EL表达式访问.</p>
+<p>原理:</p>
+<p><img src="msg.png" /></p>
+<p>案例:</p>
+<ol>
+<li>
+<p>编写控制器</p>
+<pre><code>public class MessageAction {
+    private String message;
+    public void setMessage(String message) {
+        this.message = message;
+    }
+    public String getMessage() {
+        return message;
+    }
+    public String execute(){
+        message = &quot;Hello World!&quot;;
+        return &quot;success&quot;;
+    }
+}
+</code></pre>
+
+</li>
+<li>
+<p>编写JSP: message.jsp</p>
+<pre><code>&lt;%@ page contentType=&quot;text/html; charset=utf-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;DEMO&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;展示控制器的值&lt;/h1&gt;
+    &lt;p&gt;${ message }&lt;/p&gt; 
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</li>
+<li>
+<p>配置 struts.xml</p>
+<pre><code>&lt;!-- 将控制器中的值展示到JSP上 --&gt;
+&lt;action name=&quot;msg&quot; 
+    class=&quot;cn.tedu.action.MessageAction&quot;&gt;
+    &lt;result name=&quot;success&quot;&gt;
+        /WEB-INF/jsp/message.jsp
+    &lt;/result&gt;   
+&lt;/action&gt;
+</code></pre>
+
+</li>
+<li>测试</li>
+</ol>
+<h2>Result 结果</h2>
+<p>用于处理控制器的返回结果</p>
+<p>默认情况下, 使用 extends=&quot;struts-default&quot; 继承了, struts-default.xml 文件中声明的 result 类型.</p>
+<p>Struts 的默认结果类型是 dispatcher, 最终利用 ServletDispatcherResult 类进行结果的处理.</p>
+<h3>redirect 重定向</h3>
+<p>原理:</p>
+<p><img src="redirect.png" /></p>
+<p>案例:</p>
+<ol>
+<li>
+<p>控制器</p>
+<pre><code>public class DocAction {
+
+    public String execute(){
+        System.out.println(&quot;DocAction&quot;); 
+        return &quot;doc&quot;;
+    }
+}
+</code></pre>
+
+</li>
+<li>
+<p>配置: struts.xml</p>
+<pre><code>&lt;!-- 重定向结果类型 --&gt;
+&lt;action name=&quot;doc&quot;
+    class=&quot;cn.tedu.action.DocAction&quot;&gt;
+    &lt;result name=&quot;doc&quot; type=&quot;redirect&quot;&gt;                 
+        http://doc.tedu.cn
+    &lt;/result&gt;   
+&lt;/action&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+</li>
+</ol>
+<h3>重定向到其他控制器 redirectAction</h3>
+<p>原理:</p>
+<p><img src="redirectAction.png" /></p>
+<p>案例:</p>
+<ol>
+<li>
+<p>控制器</p>
+<pre><code>public class TestAction {
+
+    public String execute(){
+        System.out.println(&quot;TestAction&quot;);
+        return &quot;test&quot;;
+    }
+
+}
+</code></pre>
+
+</li>
+<li>
+<p>配置文件 struts.xml</p>
+<pre><code>&lt;!-- 重定向到其他控制器 --&gt;
+&lt;action name=&quot;test&quot;
+    class=&quot;cn.tedu.action.TestAction&quot;&gt;
+    &lt;result name=&quot;test&quot;
+        type=&quot;redirectAction&quot;&gt;
+        hello
+    &lt;/result&gt;   
+&lt;/action&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+</li>
+</ol>
+<h3>Stream Result</h3>
+<p>原理:</p>
+<p><img src="img.png" /></p>
+<p>步骤:</p>
+<ol>
+<li>
+<p>控制器</p>
+<pre><code>public class ImageAction {
+    private InputStream image;
+    public InputStream getImage() {
+        return image;
+    }
+    public void setImage(InputStream image) {
+        this.image = image;
+    }
+
+    public String execute(){
+        //生成图片...
+        try {
+            byte[] data = createPngImage();
+            image = new ByteArrayInputStream(data);
+            return &quot;img&quot;;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return &quot;error&quot;;
+        }
+    }
+
+    public byte[] createPngImage() throws IOException{
+        //创建 BufferedImage对象
+        BufferedImage img = new BufferedImage(
+            200, 100, BufferedImage.TYPE_3BYTE_BGR);
+        img.setRGB(0, 0, 0xff0000); 
+        img.setRGB(100, 50, 0xffff00); 
+        //利用API将图片对象编码为 png
+        //酱油瓶子out(变长byte数组)
+        ByteArrayOutputStream out=
+                new ByteArrayOutputStream();
+        ImageIO.write(img, &quot;png&quot;, out);
+        //再获取PNG数据数组
+        out.close();
+        //从酱油瓶子中倒出数据(byte[])
+        byte[] data = out.toByteArray();
+        return data;
+    }
+}
+</code></pre>
+
+</li>
+<li>
+<p>错误页面: /WEB-INF/jsp/error.jsp</p>
+<pre><code>&lt;%@ page contentType=&quot;text/html; charset=utf-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;DEMO&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- /WEB-INF/jsp/demo.jsp --&gt;
+    &lt;h1&gt;错误了!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</li>
+<li>
+<p>配置:</p>
+<pre><code>&lt;!-- 利用Stream Result 动态下载图片 --&gt;
+&lt;action name=&quot;img&quot;
+    class=&quot;cn.tedu.action.ImageAction&quot;&gt;
+    &lt;result name=&quot;img&quot; type=&quot;stream&quot;&gt;
+        &lt;param name=&quot;inputName&quot;&gt;
+            image
+        &lt;/param&gt;
+        &lt;param name=&quot;contentType&quot;&gt;
+            image/png
+        &lt;/param&gt;
+    &lt;/result&gt;
+    &lt;result name=&quot;error&quot;&gt;
+        /WEB-INF/jsp/error.jsp
+    &lt;/result&gt;
+&lt;/action&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+</li>
+</ol>
+<hr />
+<p>作业</p>
+<ol>
+<li>
+<p>熟练创建项目配置Struts2环境</p>
+</li>
+<li>
+<p>开发课堂全部案例</p>
+</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		<property name="connection.url">
+			jdbc:mysql://localhost:3306/ssh
+		</property>
+		<property name="connection.username">
+			root
+		</property>
+		<property name="connection.password">
+			5894725
+		</property>
+		<!-- 方言: Hibernate利用方言生成不同数据
+		的SQL语句. -->
+		<property name="dialect">
+			org.hibernate.dialect.MySQL5Dialect
+		</property>
+		<!-- 在控制台输出生成的SQL语句 -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<!-- 指定子配置文件的位置 -->
+		<mapping resource="mapping/User.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>
+
+
