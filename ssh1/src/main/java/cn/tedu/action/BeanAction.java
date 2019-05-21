@@ -12,6 +12,7 @@ public class BeanAction {
 		System.out.println(t); 
 		System.out.println("Hello World!");
 		return "success";
+		
 	}
 }
 
