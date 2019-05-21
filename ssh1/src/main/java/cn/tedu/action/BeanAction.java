@@ -11,7 +11,7 @@ public class BeanAction {
 		Thread t=Thread.currentThread();
 		System.out.println(t); 
 		System.out.println("Hello World!");
-		return "success";
+		return "success11111";
 		
 	}
 }
