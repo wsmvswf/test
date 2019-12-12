@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 
 @Controller// Bean ID: beanAction
 @Scope("prototype")
-public class BeanAction {	
-	final int a=622221;
+public class BeanAction  {	
+	final int a=6222212;
 	public String execute(){
 		Thread t=Thread.currentThread();
 		System.out.println(t); 
